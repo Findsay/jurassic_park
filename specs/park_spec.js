@@ -7,11 +7,11 @@ var park, dino1, dino2, dino3, dino4, dino5;
 describe("Park", function(){
   beforeEach(function(){
     park = new Park();
-    dino1 = new Dinosaur("TRex", 1);
-    dino2 = new Dinosaur("TRex", 1);
-    dino3 = new Dinosaur("Velociraptor", 4);
-    dino4 = new Dinosaur("Velociraptor", 4);
-    dino5 = new Dinosaur("Triceratops", 2);
+    dino1 = new Dinosaur("TRex", 1, 10);
+    dino2 = new Dinosaur("TRex", 1, 9);
+    dino3 = new Dinosaur("Velociraptor", 4, 8);
+    dino4 = new Dinosaur("Velociraptor", 4, 7);
+    dino5 = new Dinosaur("Triceratops", 2, 3);
   });
 
   it("should start empty", function(){
@@ -37,4 +37,17 @@ describe("Park", function(){
     var offspringOf2orMore = [dino3, dino4, dino5];
     assert.deepStrictEqual(park.getDinoOffspring(), offspringOf2orMore);
   });
+
+  it("should calculate number of dinosaurs after year one, starting with 1", function(){
+    park.add(dino1);
+    park.xYearsPass(1);
+    assert.strictEqual(park.dinosaurCount(), 2);
+  });
+
+  it("should calculate number of dinosaurs after 2 years, starting with 1", function(){
+    park.add(dino1);
+    park.xYearsPass(2)
+    assert.strictEqual(park.dinosaurCount(), 3);
+  });
+
 });

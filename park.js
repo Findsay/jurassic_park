@@ -24,6 +24,19 @@ Park.prototype = {
       }
     }
     return resultArray;
+  },
+  xYearsPass: function(years){
+    for (i = 0; i < years; i ++){
+      for (dinosaur of this.dinosaurs){
+        dinosaur.itsMahBuffday();
+        if (dinosaur.age >= dinosaur.breedAge){
+          var dinoBabies = dinosaur.haveBabyDinos();
+          for (baby of dinoBabies){
+            this.add(baby);
+          }
+        }
+      }
+    }
   }
 
 };
